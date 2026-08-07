@@ -1,0 +1,1524 @@
+{
+ "a": {
+  "abl": "rubric only",
+  "desc": "Message text + rubric. No context features, no retrieval, no media.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "personal",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.8
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "digest",
+    "gold_action": "notify",
+    "pred_type": "unknown",
+    "gold_type": "urgent",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.8
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "digest",
+    "gold_action": "mute",
+    "pred_type": "unknown",
+    "gold_type": "spam",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.8
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "digest",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.88
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_047",
+    "pred_action": "digest",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "promo_matches_opt_in",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.8
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "verified_business_non_urgent",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "close_contact_urgent_request",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.88
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 11,
+   "type": 11,
+   "driver": 4,
+   "both": 9,
+   "evidence_cited": 0
+  }
+ },
+ "b": {
+  "abl": "+ context features",
+  "desc": "Adds user / group / business / relationship / temporal / deadline / template.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "fake_support_pressure",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "personal",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "digest",
+    "gold_action": "notify",
+    "pred_type": "unknown",
+    "gold_type": "urgent",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "spam",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.88
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_047",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.84
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "work_deadline_or_meeting",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.88
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 14,
+   "type": 13,
+   "driver": 8,
+   "both": 13,
+   "evidence_cited": 0
+  }
+ },
+ "c": {
+  "abl": "+ retrieval & evidence",
+  "desc": "Adds the candidate pool, near-duplicate aggregates and evidence citation.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [
+     "message_0023"
+    ],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [
+     "message_0024"
+    ],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "personal",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0046"
+    ],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "digest",
+    "gold_action": "notify",
+    "pred_type": "unknown",
+    "gold_type": "urgent",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "spam",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0048",
+     "message_0357"
+    ],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [
+     "message_0401"
+    ],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "similar_historically_ignored",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [
+     "message_0115",
+     "message_0335"
+    ],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [
+     "message_0403"
+    ],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_047",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0402"
+    ],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "verified_business_non_urgent",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [
+     "message_0412"
+    ],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0167"
+    ],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "work_deadline_or_meeting",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [
+     "message_0362"
+    ],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [
+     "message_0238"
+    ],
+    "gold_evidence": [],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [
+     "message_0213"
+    ],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 14,
+   "type": 13,
+   "driver": 8,
+   "both": 13,
+   "evidence_cited": 13
+  }
+ },
+ "d": {
+  "abl": "+ media enrichment",
+  "desc": "Adds OCR text, ASR transcripts and the extracted media facts.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [
+     "message_0023"
+    ],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [
+     "message_0024"
+    ],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0046"
+    ],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "close_contact_urgent_request",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "spam",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0048",
+     "message_0357"
+    ],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [
+     "message_0401"
+    ],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "similar_historically_ignored",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [
+     "message_0115",
+     "message_0335"
+    ],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [
+     "message_0403"
+    ],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_047",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0402"
+    ],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "verified_business_non_urgent",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [
+     "message_0412"
+    ],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0167"
+    ],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "work_deadline_or_meeting",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [
+     "message_0362"
+    ],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [
+     "message_0238"
+    ],
+    "gold_evidence": [],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [
+     "message_0213"
+    ],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 15,
+   "type": 15,
+   "driver": 9,
+   "both": 15,
+   "evidence_cited": 13
+  }
+ },
+ "e": {
+  "abl": "full (as shipped)",
+  "desc": "Adds the deterministic credential/payment solicitation scan.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [
+     "message_0023"
+    ],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "fake_support_pressure",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [
+     "message_0024"
+    ],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0046"
+    ],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "close_contact_urgent_request",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "spam",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0048",
+     "message_0357"
+    ],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [
+     "message_0401"
+    ],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "similar_historically_ignored",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [
+     "message_0115",
+     "message_0335"
+    ],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [
+     "message_0403"
+    ],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_047",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0402"
+    ],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "verified_business_non_urgent",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [
+     "message_0412"
+    ],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0167"
+    ],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "work_deadline_or_meeting",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [
+     "message_0362"
+    ],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [
+     "message_0238"
+    ],
+    "gold_evidence": [],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [
+     "message_0213"
+    ],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 15,
+   "type": 15,
+   "driver": 10,
+   "both": 15,
+   "evidence_cited": 13
+  }
+ },
+ "f": {
+  "abl": "full + fast path (retired)",
+  "desc": "As shipped, but with ENABLE_FAST_PATH=True. The retired configuration.",
+  "rows": [
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_019",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "otp_verification_phishing",
+    "pred_evidence": [
+     "message_0023"
+    ],
+    "gold_evidence": [
+     "message_0023"
+    ],
+    "conf": 0.85
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_020",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "fake_support_pressure",
+    "gold_driver": "fake_support_pressure",
+    "pred_evidence": [
+     "message_0024"
+    ],
+    "gold_evidence": [
+     "message_0024"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_041",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0046"
+    ],
+    "gold_evidence": [
+     "message_0046"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_042",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "close_contact_urgent_request",
+    "gold_driver": "close_contact_urgent_request",
+    "pred_evidence": [],
+    "gold_evidence": [
+     "message_0047"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_043",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "spam",
+    "gold_type": "spam",
+    "pred_driver": "opted_out_or_dismissed_marketing",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0048",
+     "message_0357"
+    ],
+    "gold_evidence": [
+     "message_0048"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_044",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "offer_relevant_not_immediate",
+    "gold_driver": "matches_interests_low_priority",
+    "pred_evidence": [
+     "message_0401"
+    ],
+    "gold_evidence": [
+     "message_0049"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_045",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "similar_historically_ignored",
+    "gold_driver": "similar_historically_ignored",
+    "pred_evidence": [
+     "message_0115",
+     "message_0335"
+    ],
+    "gold_evidence": [
+     "message_0050"
+    ],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_046",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "event",
+    "gold_type": "event",
+    "pred_driver": "school_admin_same_day_operational",
+    "gold_driver": "school_admin_same_day_operational",
+    "pred_evidence": [
+     "message_0403"
+    ],
+    "gold_evidence": [
+     "message_0051"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "fast:F1",
+    "message_id": "sample_msg_047",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "promotion",
+    "gold_type": "promotion",
+    "pred_driver": "similar_historically_ignored",
+    "gold_driver": "opted_out_or_dismissed_marketing",
+    "pred_evidence": [
+     "message_0402"
+    ],
+    "gold_evidence": [
+     "message_0052"
+    ],
+    "conf": 0.87
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_048",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "business_update",
+    "gold_type": "business_update",
+    "pred_driver": "verified_business_non_urgent",
+    "gold_driver": "verified_business_legit_not_immediate",
+    "pred_evidence": [
+     "message_0412"
+    ],
+    "gold_evidence": [
+     "message_0053"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_049",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "unknown",
+    "gold_type": "unknown",
+    "pred_driver": "unfamiliar_sender_no_risk_signals",
+    "gold_driver": "unfamiliar_sender_no_risk_signals",
+    "pred_evidence": [],
+    "gold_evidence": [],
+    "conf": 0.81
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_050",
+    "pred_action": "digest",
+    "gold_action": "digest",
+    "pred_type": "personal",
+    "gold_type": "personal",
+    "pred_driver": "safe_casual_chat",
+    "gold_driver": "trusted_but_not_urgent",
+    "pred_evidence": [
+     "message_0167"
+    ],
+    "gold_evidence": [
+     "message_0054"
+    ],
+    "conf": 0.82
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_051",
+    "pred_action": "notify",
+    "gold_action": "notify",
+    "pred_type": "urgent",
+    "gold_type": "urgent",
+    "pred_driver": "work_deadline_or_meeting",
+    "gold_driver": "work_deadline_or_meeting",
+    "pred_evidence": [
+     "message_0362"
+    ],
+    "gold_evidence": [
+     "message_0055"
+    ],
+    "conf": 0.89
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_052",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "otp_verification_phishing",
+    "gold_driver": "first_contact_sensitive_ask",
+    "pred_evidence": [
+     "message_0238"
+    ],
+    "gold_evidence": [],
+    "conf": 0.86
+   },
+   {
+    "tier": "llm",
+    "message_id": "sample_msg_053",
+    "pred_action": "mute",
+    "gold_action": "mute",
+    "pred_type": "scam",
+    "gold_type": "scam",
+    "pred_driver": "router_instruction_injection",
+    "gold_driver": "router_instruction_injection",
+    "pred_evidence": [
+     "message_0213"
+    ],
+    "gold_evidence": [
+     "message_0056"
+    ],
+    "conf": 0.85
+   }
+  ],
+  "score": {
+   "n": 15,
+   "action": 15,
+   "type": 15,
+   "driver": 9,
+   "both": 15,
+   "evidence_cited": 13
+  }
+ }
+}

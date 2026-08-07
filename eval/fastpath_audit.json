@@ -1,0 +1,154 @@
+{
+ "msg_014": {
+  "rule": "fast:F1",
+  "fast": [
+   "mute",
+   "promotion",
+   "similar_historically_ignored"
+  ],
+  "llm": [
+   "mute",
+   "promotion",
+   "opted_out_or_dismissed_marketing"
+  ],
+  "llm_traps": [
+   "T1",
+   "T7"
+  ],
+  "llm_rationale": "The user has explicitly opted out of Swish food promotions (status=opted_out, allows_promotions=no) and has dismissed this identical template 3 times "
+ },
+ "msg_024": {
+  "rule": "fast:F1",
+  "fast": [
+   "mute",
+   "promotion",
+   "similar_historically_ignored"
+  ],
+  "llm": [
+   "mute",
+   "promotion",
+   "opted_out_or_dismissed_marketing"
+  ],
+  "llm_traps": [
+   "T1",
+   "T7"
+  ],
+  "llm_rationale": "The user has explicitly opted out of marketing from Flipkart (status=opted_out) and has dismissed 9 similar messages in the last 30 days with zero ope"
+ },
+ "msg_026": {
+  "rule": "fast:F2",
+  "fast": [
+   "mute",
+   "scam",
+   "first_contact_sensitive_ask"
+  ],
+  "llm": [
+   "mute",
+   "scam",
+   "otp_verification_phishing"
+  ],
+  "llm_traps": [
+   "T4",
+   "T6",
+   "T11"
+  ],
+  "llm_rationale": "All four T4 scam signals are present: unverified sender, lookalike domain (amazonpay-delivery.in embeds \"amazon\" but is only 2 days old and does not m"
+ },
+ "msg_036": {
+  "rule": "fast:F2",
+  "fast": [
+   "mute",
+   "scam",
+   "first_contact_sensitive_ask"
+  ],
+  "llm": [
+   "mute",
+   "scam",
+   "fake_support_pressure"
+  ],
+  "llm_traps": [
+   "T4",
+   "T6",
+   "T11"
+  ],
+  "llm_rationale": "Every signal converges on scam: the sender is unverified with only 34 account days, the domain is a lookalike (razorpayx-payouts.com, 9 days old) embe"
+ },
+ "msg_051": {
+  "rule": "fast:F1",
+  "fast": [
+   "mute",
+   "promotion",
+   "similar_historically_ignored"
+  ],
+  "llm": [
+   "mute",
+   "promotion",
+   "opted_out_or_dismissed_marketing"
+  ],
+  "llm_traps": [
+   "T1",
+   "T3",
+   "T7"
+  ],
+  "llm_rationale": "The user has explicitly opted out of marketing from Flipkart (status=opted_out) and has dismissed 9 similar messages in the last 30 days with near-zer"
+ },
+ "msg_052": {
+  "rule": "fast:F2",
+  "fast": [
+   "mute",
+   "scam",
+   "first_contact_sensitive_ask"
+  ],
+  "llm": [
+   "mute",
+   "scam",
+   "fake_support_pressure"
+  ],
+  "llm_traps": [
+   "T4",
+   "T6",
+   "T11"
+  ],
+  "llm_rationale": "All four T4 scam-domain conditions are met: sender is unverified (account_age_days=26), the domain talabat-refund.com is a lookalike embedding the bra"
+ },
+ "msg_076": {
+  "rule": "fast:F2",
+  "fast": [
+   "mute",
+   "scam",
+   "first_contact_sensitive_ask"
+  ],
+  "llm": [
+   "mute",
+   "scam",
+   "fake_support_pressure"
+  ],
+  "llm_traps": [
+   "T4",
+   "T6",
+   "T11"
+  ],
+  "llm_rationale": "Every signal converges on scam: the sender is unverified with only 26 account days, the domain is a brand-lookalike (talabat-refund.com vs talabat.com"
+ },
+ "msg_085": {
+  "rule": "fast:F2",
+  "fast": [
+   "mute",
+   "scam",
+   "first_contact_sensitive_ask"
+  ],
+  "llm": [
+   "mute",
+   "scam",
+   "otp_verification_phishing"
+  ],
+  "llm_traps": [
+   "T4",
+   "T6",
+   "T11",
+   "T12",
+   "T13"
+  ],
+  "llm_rationale": "The voice note explicitly solicits an OTP under the guise of bank verification \u2014 the canonical otp_verification_phishing pattern. Every risk signal al"
+ }
+}

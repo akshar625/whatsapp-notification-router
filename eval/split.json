@@ -1,0 +1,36 @@
+{
+ "exemplars": [
+  "sample_msg_001",
+  "sample_msg_002",
+  "sample_msg_003",
+  "sample_msg_004",
+  "sample_msg_005",
+  "sample_msg_006",
+  "sample_msg_007",
+  "sample_msg_008",
+  "sample_msg_009",
+  "sample_msg_010",
+  "sample_msg_011",
+  "sample_msg_012",
+  "sample_msg_013",
+  "sample_msg_014",
+  "sample_msg_015"
+ ],
+ "held_out": [
+  "sample_msg_019",
+  "sample_msg_020",
+  "sample_msg_041",
+  "sample_msg_042",
+  "sample_msg_043",
+  "sample_msg_044",
+  "sample_msg_045",
+  "sample_msg_046",
+  "sample_msg_047",
+  "sample_msg_048",
+  "sample_msg_049",
+  "sample_msg_050",
+  "sample_msg_051",
+  "sample_msg_052",
+  "sample_msg_053"
+ ]
+}

@@ -1,0 +1,251 @@
+## [2026-08-01T23:49:58+05:30] ONBOARDING COMPLETE
+
+AGREEMENT RECORDED: /Users/aksharanup/Developer/hackerrank-orchestrate-august26
+Agent: claude-code
+Language: py
+System Time: 2026-08-01T23:49:58+05:30
+Time Remaining: not configured
+
+## [2026-08-01T23:49:58+05:30] SESSION START
+
+Agent: claude-code
+Repo Root: /Users/aksharanup/Developer/hackerrank-orchestrate-august26
+Branch: main
+Worktree: main
+Parent Agent: none
+Language: py
+Time Remaining: not configured
+
+## [2026-08-02T07:27:18+05:30] RECON PASS - dataset inspection, no solution code
+
+User Prompt (verbatim, secrets redacted):
+Read AGENTS.md and set up chat transcript logging BEFORE anything else. Then do a RECON PASS ONLY (no solution code, no pipeline, no architecture): scratch script inspecting the dataset, writing recon/DATA_REPORT.md covering (1) per-CSV schema/dtypes/nulls/samples, (2) messages.csv distributions + Hinglish detection, (3) sample_messages.csv label vocabulary, (4) join integrity, (5) history/events linkage, (6) media inventory + durations, (7) personalization probe, (8) 15 hardest messages.
+
+Agent Response Summary:
+Created the log file and ran onboarding; user agreed. Wrote a throwaway recon script and produced recon/DATA_REPORT.md. Key findings: 110 messages / 30 solved samples; 8 sample rows share byte-identical text with 12 messages.csv rows (label leak); 19 exact text duplicates between messages.csv and message_history.csv; all 31 gold evidence ids resolve to message_history and 0 to messages.csv; daily_notification_summary date range (07-04..07-17) does not overlap messages.csv (07-18..07-31) so no date join is possible; 36.7 percent of business messages have no user_business_history row; media extensions are wrong (10 of 20 images and 9 of 13 audio are a different container than the extension claims); 8 voice notes carry empty message_text and the 3 blank-text gold samples split across all three actions.
+
+Actions:
+* Created HOME/hackerrank_orchestrate_august26/log.txt; appended ONBOARDING COMPLETE + SESSION START
+* Wrote scratch recon script; generated recon/DATA_REPORT.md
+* Verified media containers with file(1)/PIL/mutagen/wave; ffprobe absent
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T07:27:18+05:30] STEP 0 SMOKE TESTS + DETERMINISTIC BACKBONE
+
+User Prompt (verbatim, secrets redacted):
+Build the deterministic backbone. NO LLM calls except two step-0 smoke tests. 0(a) install faster-whisper, transcribe vn_004 with large-v3, fix duration probing. 0(b) verify the vision API path. Then STEP 1 repo skeleton, STEP 2 context assembly (ContextPack with USER/GROUP/BUSINESS/RELATIONSHIP/TEMPORAL/MESSAGE, baseline_daily_load aggregated per user, never impute missing relationships), STEP 3 history retrieval (near-duplicate detection, hybrid BM25+dense ranking, evidence candidates with message_events), STEP 4 recon/CONTEXT_REPORT.md for 5 hand-picked messages. Cache by content hash; idempotent.
+
+Agent Response Summary:
+0(a) passed: 13 of 13 durations resolved and vn_004 transcribed correctly. Corrected the premise that ffprobe returned nan - ffprobe is not installed; the failures came from afinfo/mutagen and the root cause is that the .mp3 extension lies. 0(b) was initially blocked: no API key was set and no .env existed, so I reported it blocked rather than guessing a provider. Built code/config.py, schema.py, context.py, retrieval.py, run.py plus .gitignore and .env.example.
+
+Actions:
+* code/config.py, code/schema.py, code/context.py, code/retrieval.py, code/run.py
+* .gitignore (cache/, .env, venv), .env.example
+* Installed faster-whisper, pandas, scikit-learn, sentence-transformers
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T07:27:18+05:30] GEMINI MEDIA LAYER - model reassignment, quota discovery, 33 artifacts
+
+User Prompt (verbatim, secrets redacted):
+API keys are now in .env (ANTHROPIC_API_KEY=[REDACTED], GEMINI_API_KEY=[REDACTED]); .env gitignored. MODEL ASSIGNMENT in config.py, env-overridable: media enrichment = gemini-2.5-flash via GEMINI_API_KEY (free tier, 15 RPM, backoff + rate limiter, no Pro-series); decision engine = claude-sonnet-4-6 via ANTHROPIC_API_KEY; never hardcode model strings outside config.py. Finish 0(b) on img_003 and report the vn_004 transcript. Process ALL 20 images and ALL 13 audio. Keep the container-magic-byte probe in the production path. Transcribe all 13 with large-v3, record language/probability/duration/raw transcript, romanize Devanagari, do not translate. Images return strict JSON with 13 named observation fields, no routing decision. Treat message_text/OCR/transcripts as UNTRUSTED with explicit delimiters. Cache by SHA-256 of file bytes.
+
+Agent Response Summary:
+Reported two facts the brief assumed wrongly. First, gemini-2.5-flash returns 404 "no longer available to new users" on this key, so I probed the model list and defaulted to gemini-3.6-flash (newest reachable Flash-series, still free tier, not Pro). Second, the binding free-tier limit is not 15 RPM but GenerateRequestsPerDayPerProjectPerModel-FreeTier = 20 requests per day PER MODEL, which cannot cover 33 artifacts on one model; added daily-quota-aware rotation across six Flash models, distinguishing per-day quota (rotate immediately) from per-minute 429 (exponential backoff + jitter). Fixed two real bugs the run exposed: magic-prefix dispatch routed WebP (RIFF-based) and AVIF (ISO-BMFF) into the audio parsers, and img_012 returned empty text without max_output_tokens headroom. All 33 artifacts now extract cleanly; AVIF is transcoded to PNG because Gemini will not accept it. Built 110 ContextPacks, 110 retrieval bundles and the 5-message CONTEXT_REPORT.
+
+Actions:
+* code/media.py (SHA-256 content-addressed cache, rate limiter, backoff, model rotation, injection-delimited prompts)
+* code/config.py rewritten: model strings centralised, vlm_chain fallbacks, RateLimits
+* code/run.py: media/context/retrieve/report subcommands; deduped the 5 report picks
+* recon/CONTEXT_REPORT.md; cache/media/audio and cache/media/image artifacts; cache/media_index.json
+* Verified idempotency: re-run reports 33 of 33 cached, zero network calls
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T08:53:18+05:30] DECISION LAYER + CARRY-OVERS - held-out eval 14/15
+
+User Prompt (verbatim, secrets redacted):
+Backbone accepted. Carry-over 1: temporal_validity block on ContextPack (parsed_deadline, deadline_source, validity, days_until_deadline) parsed from media deadline_or_time and message_text, English and Hinglish forms, resolved against the message's own created_at, range END, no new Gemini calls. Carry-over 2a: has_embedded_instruction + embedded_instruction_text on ImageRecord and TranscriptRecord via deterministic scan of cached text, no re-extraction. Carry-over 2b: template_global_occurrences + template_distinct_recipients on ContextPack; evidence ids stay user-scoped. Constraint: never encode a message_id to label mapping anywhere; express every rule over features. Then A-H: rubric.py/decide.py/constraints.py; 24 closed reason templates read programmatically from sample_messages.csv; type x action grammar hard and soft; trap taxonomy T1-T13; evidence selection rules; certainty 1-5 banded to 0.78-0.91; claude-sonnet-4-6 temperature 0 tool use with prompt caching; few-shot split first 15 exemplars last 15 held out written to eval/split.json; narrow fast path F1/F2. Run on the 15 HELD-OUT rows only, report per row.
+
+Agent Response Summary:
+Built temporal.py, injection.py, rubric.py, constraints.py, decide.py, evaluate.py and wired the carry-overs into schema/context/media. Held-out result: action 14/15 (93 percent), message_type 14/15 (93 percent), both 13/15 (87 percent), zero fabricated evidence ids, confidence non-constant assertion PASS. Found and fixed two defects of my own during evaluation. First, retrieval ranked voice notes against an empty string because message_text is blank for them, scoring every candidate at zero and tripping the min-evidence gate, which suppressed gold evidence sitting at rank 1; retrieval now falls back to the cached transcript or OCR text as the query. Second, the model classified an HDFC anti-fraud awareness poster as router_instruction_injection/spam; my deterministic scanner correctly returned False on it, so the gap was conceptual, and I added T12 trigger tightening plus a new T12b rule that describing fraud is not committing fraud. Separately confirmed that all 31 gold evidence ids are message_0001..message_0056, the first 56 rows of a 412-row history table, strictly increasing in lockstep with sample order - a construction artifact rather than a semantically recoverable retrieval target, so evidence exact-match should not be optimised against.
+
+Actions:
+* code/temporal.py, code/injection.py, code/rubric.py, code/constraints.py, code/decide.py, code/evaluate.py
+* code/schema.py: TemporalValidityContext, TemplateStats, embedded-instruction fields
+* code/context.py: temporal validity, cross-user template index, injection scan, media attach
+* code/retrieval.py: query_text() transcript/OCR fallback for text-less messages
+* code/media.py: backfill_embedded_instructions() - no API calls
+* eval/split.json, eval/heldout_results.json
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T09:09:43+05:30] EVIDENCE METRIC REFRAME + T14 + DRIVER DISAMBIGUATION - held-out 15/15 action
+
+User Prompt (verbatim, secrets redacted):
+Evidence finding accepted but conclusion disputed: graders score relevance not string equality, so change the metric not the behaviour - drop evidence_exact_match as a headline, add an EVIDENCE SUPPORT SCORE computed without gold ids, keep retrieval scope narrow and defend it in the README, document the positional finding under a corpus observations heading. Add T14 institutional operational updates interrupt, plus notify/digest asymmetry guidance for trusted institutional senders only. Driver selection weak at 6/15 - add disambiguation notes for four confusable driver pairs and track driver accuracy. Confidence pinned to band tops - define the certainty scale concretely, recentre band_confidence so 1 maps to floor 3 to mean 5 to ceiling, assert mean per action within +/-0.02 of gold. Fast path F1 hardcodes message_type=promotion - derive from features or restrict F1 to business plus promotional near-duplicates. Re-run the same 15 held-out rows.
+
+Agent Response Summary:
+Applied all six items. Held-out action accuracy rose to 15/15 (from 13/15), message_type 14/15, driver accuracy 8/15 (from 5/15), both action+type 14/15. Evidence support score: 100 percent of cited ids in the candidate pool, zero fabricated, 11/13 of citing rows corroborated by message_events, 73 percent fully defensible. Confidence non-constant assertion now PASSES for all three actions; mean deltas notify +0.019 PASS, digest +0.002 PASS, mute +0.023 marginal FAIL. Two prompt-only fixes did not work and needed a design change: the concrete certainty scale did not stop the model compressing self-reported certainty into 4-5, so band position is now a 50/50 blend of model certainty and a deterministic signal_agreement score computed from evidence corroboration, unanimity of prior reactions, constraint violations, trap count and relationship status - consistent with the stated principle that a generated token is not a posterior. Also tightened the asymmetry to exclude unfamiliar and none_on_record senders after it wrongly promoted an unknown-sender question to notify, and inverted-priority-fixed the otp vs fake_support disambiguation after the model applied both backwards. Declined to tune the mute confidence delta further: on n=7 a 0.023 delta is about two rounding steps and tuning it would be fitting noise.
+
+Actions:
+* code/rubric.py: T14 + operational test, asymmetry with explicit exclusions, certainty scale, driver disambiguation block, driver_class/events_support_driver, gold calibration constants
+* code/constraints.py: signal_agreement(), recentred band_confidence(), F1 restricted to business + promotional shape (no hardcoded message_type)
+* code/decide.py: wire signal agreement into confidence
+* code/evaluate.py: driver accuracy as a primary metric, evidence support score, confidence mean assertion vs gold
+* README.md: new Corpus Observations section (8 findings incl. the evidence numbering artifact and the narrow-scope defence)
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T09:35:24+05:30] FULL 110 RUN - output.csv written, all validation checks pass
+
+User Prompt (verbatim, secrets redacted):
+15/15 action accepted. Two calls endorsed (not tuning the mute delta on n=7; moving band position onto deterministic signal_agreement) - both go in the README as reasoned decisions. STOP tuning drivers; log driver accuracy as a diagnostic and note in the README that it understates reason quality. RUN THE FULL 110: run the complete pipeline over dataset/messages.csv and write output.csv, then validate programmatically (row count, column order, allowed values, confidence range, evidence format and resolvability, no NaN/empty/stray newlines, pandas round-trip) and report distributions (action, message_type, confidence per action, evidence counts, tier with fast-path rule ids, extended count, trap counts). Flag for review: HARD constraint fires, SOFT escalations, the 5 injection rows, the two expired-poster rows, notify inside quiet hours, and the 6 empty-pool rows. Do not tune anything based on the full-110 distribution.
+
+Agent Response Summary:
+Built code/predict.py (run, cache-resume, write, validate, report, flag) and ran all 110 through the pipeline. output.csv written; all 16 validation checks PASS including the pandas round-trip on multi-line business templates, exact column order, zero fabricated evidence ids and every id resolving to message_history. Distributions: notify 31.8 percent, digest 22.7 percent, mute 45.5 percent; scam 28.2 percent is the largest type. Confidence deltas vs gold means: notify +0.021, digest +0.002, mute +0.022. Tier: 100 LLM, 9 fast path (3 F1, 6 F2), 1 soft escalation, 0 HARD overrides, 0 extended drivers. All five injection rows routed mute/scam. The two expired-poster rows diverge exactly as T3xT1 predicts (digest for the opted-in user, mute for the opted-out user). All six empty-pool rows correctly emit none. One notify inside quiet hours (a school consent deadline closing that evening) which T8 explicitly permits. Surfaced one genuine defect without fixing it, per the instruction not to change things off this run: fast-path F2 pre-empts the LLM on msg_108, so an injection row got the first_contact_sensitive_ask driver instead of router_instruction_injection - action and message_type are still correct, only the reason string is less specific. Recommended a one-line guard but left it for the user's call. Did not tune anything.
+
+Actions:
+* code/predict.py - full-run driver with validation, distribution report and review flags
+* output.csv - 110 rows, all checks pass
+* cache/predictions.json - per-message decision cache for idempotent re-runs
+* README.md - new Reasoned Decisions section (confidence off the generated token, residual mute delta left in place, driver accuracy as diagnostic)
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T09:45:31+05:30] FIX 1 APPLIED + THREE AUDITS REPORTED (fast path, scam precision, unknown type)
+
+User Prompt (verbatim, secrets redacted):
+output.csv accepted as the floor. Fix 1: apply the guard so the fast path never fires when has_embedded_instruction is set; re-run affected rows. Fix 2: audit the other 8 fast-path rows the same way - would the LLM have produced a MORE specific driver? If yes, tighten that rule's precondition rather than widening it. Verification pass on scam precision: print a table of all 31 scam rows with the listed fields, then say how many satisfy the FULL T4 conjunction and how many were called scam on a weaker basis; if the credential/payment regex has a loose limb matching ordinary transactional language, say so plainly. Verification pass on the unknown type: it fired 0 times; check whether the rubric or prompt suppresses it and find the rows where the model was most torn. Report all four before making any change beyond Fix 1.
+
+Agent Response Summary:
+Applied Fix 1 only. All five injection rows now carry router_instruction_injection. Reported three audits without changing code. Fast-path audit: ran the LLM on all 8 remaining fast-path rows and found action/type identical 8/8 but driver systematically weaker 8/8 - F1 hardcodes similar_historically_ignored where the rubric's own disambiguation says opted_out_or_dismissed_marketing (F1's precondition already implies marketing), and F2 hardcodes first_contact_sensitive_ask, which the rubric's priority order reserves for when the first two risk drivers do NOT apply. The defect is the hardcoded driver, not the precondition, so tightening preconditions cannot fix it; recommended deriving the driver from features or dropping the fast path. Scam precision: 31 rows, 6 satisfy the full T4 conjunction, 4 are injection rows, 21 are group/personal with no business account so T4 is structurally inapplicable and they rest on content plus sender plus absent relationship. Confirmed the predicted loose limb: the credential/payment regex lacks a trailing word boundary so fee matches inside feedback, and matches bare nouns without ask context including the explicit negation No payment or OTP is required; it also has false negatives because verify requires an article. Blast radius is limited to the F2 gate and no current output is wrong, but the conjunction guarantee is unsound. Unknown type: it is in the enum but has zero usage guidance, no driver implies it, and critically it appears in none of the 15 exemplars because the only gold unknown row is in the held-out half - effective suppression caused by my own split. Best candidate is msg_090; separately flagged that msg_096 and msg_089 use close_contact_urgent_request for a stranger sender.
+
+Actions:
+* code/constraints.py - fast_path returns None when has_embedded_instruction is set
+* cache invalidated for msg_108 and re-run; output.csv regenerated, all validation still passes
+* eval/fastpath_audit.json, eval/scam_audit.json
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T11:37:07+05:30] FAST PATH RETIRED, ASK-REGEX REBUILT, unknown + close_contact FIXED - held-out 15/15 on both scored axes
+
+User Prompt (verbatim, secrets redacted):
+Four changes, all scored-axis fixes. 1) Drop the fast path entirely (option 2) - remove F1/F2 from the decision path, keep them behind ENABLE_FAST_PATH default False, keep eval/fastpath_audit.json. 2) Fix credential_or_payment_ask - trailing word boundaries, require ask context not a bare noun, handle explicit negation consistent with T12b, drop the mandatory article; report the new firing rate overall and by conversation_type. 3) unknown - add usage guidance to the system prompt and note the pairing with unfamiliar_sender_no_risk_signals, but do NOT move the gold unknown row into the exemplar pool. 4) close_contact_urgent_request requires established closeness evidenced in the data; state it as T2 applied to relationship. Then re-run held-out, then the full 110, re-validate and re-report; show held-out before and after.
+
+Agent Response Summary:
+All four applied. Held-out went from action 15/15 type 14/15 driver 8/15 to action 15/15 type 15/15 driver 9/15, both scored axes now perfect, tier 100 percent LLM. Full 110 re-run: all 16 validation checks pass, zero fabricated evidence ids. The unknown guidance made the type reachable - msg_090 is now digest/unknown with unfamiliar_sender_no_risk_signals, the row predicted as strongest candidate, and no row was forced. The closeness precondition removed close_contact_urgent_request from both stranger rows (msg_089, msg_096, sender u_049); the driver now appears only on three rows whose sender is an established family contact. Regex firing fell from 32 to 21 percent overall and from 40 to 0 percent on business_update while holding 74 percent on scam, and passes 22 of 22 hand-built positive and negative cases including the negation and feedback-substring failures. Reported one correction to the brief's premise: credential_or_payment_ask is referenced in exactly one place, inside the now-disabled fast path, so it currently feeds nothing the LLM reads - the described false-positive-toward-scam risk does not presently exist, and the fix only takes effect if the signal is surfaced into the LLM context or the fast path is re-enabled.
+
+Actions:
+* code/config.py - ENABLE_FAST_PATH flag, default False, with the measurement recorded in a comment
+* code/decide.py - fast path gated behind the flag
+* code/constraints.py - credential_or_payment_ask rebuilt: clause-level scan, ask-verb bound to sensitive object, negation guard, trailing word boundaries
+* code/rubric.py - unknown usage guidance, close_contact_urgent_request closeness precondition, unfamiliar/unknown pairing note
+* output.csv regenerated (110 rows); eval/heldout_results.json, cache/predictions.json
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T13:00:18+05:30] SOLICITATION SCAN SURFACED (gate passed), SCAM AUDIT, ABLATION TABLE
+
+User Prompt (verbatim, secrets redacted):
+Correction accepted. 1) Surface credential_or_payment_ask as a deterministic feature line in render_context beside the T4/T6 signals, presented as an observation not a verdict, supporting signal only, never sufficient alone for scam. Re-run the 15 held-out rows and keep the change ONLY if action stays 15/15 and type stays 15/15; if either drops, revert and report what broke. 2) One targeted check on the non-business scam rows: does each ACTUALLY SOLICIT something, or merely describe/warn/forward alarming content. Print them with full text and classify SOLICITS or DESCRIBES; for DESCRIBES say what type and action instead. Report only, change nothing. 3) Build the ablation table over six configurations a-f, re-running held-out under each, reporting action/type/driver accuracy, written to eval/ablation.md.
+
+Agent Response Summary:
+Gate passed and change kept: action 15/15 and type 15/15 both held, driver improved 9 to 10. Scam audit found 24 non-business scam rows (not 21 - the set shifted after the earlier re-run); 23 genuinely SOLICIT a credential, payment, or a click on a credential-bearing link, and 1 (msg_018, a prize-bait opener naming no channel, link, credential or amount) is better read as DESCRIBES/lure and would be better typed spam, action unchanged at mute. Found and fixed a bug in my own ablation harness before reporting: run_config called engine._call() directly, bypassing decide(), which is where the fast path is consulted - config f was therefore identical to config e by construction and the ENABLE_FAST_PATH flag had no effect. After routing through decide(), config f measures driver 9/15 against config e's 10/15, confirming the earlier audit that the fast path costs driver specificity. Ablation shows context features carry the largest single jump (a to b: action 11 to 14, type 11 to 13), retrieval adds nothing to action or type on this set though it is what produces the scored evidence column, and media enrichment is the decisive component (c to d: action 14 to 15, type 13 to 15). Also re-ran the full 110 because surfacing the scan changed render_context after the previous run, leaving output.csv stale relative to shipped code; all 16 validation checks pass.
+
+Actions:
+* code/decide.py - solicitation scan line in render_context; Ablation dataclass; empty_bundle(); decide() accepts an ablation
+* code/ablate.py - six-configuration harness, corrected to route through decide()
+* eval/ablation.md, eval/ablation.json
+* output.csv regenerated to match shipped configuration
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T13:16:14+05:30] SCAM/SPAM RULE + SUBMISSION PACKAGING
+
+User Prompt (verbatim, secrets redacted):
+Two small changes then packaging. 1) msg_018: agreed spam over scam, but do NOT special-case the row - add a rubric feature rule distinguishing scam (concrete ask: credential, payment, or click on a credential/payment-bearing link) from spam (unsolicited bait, prize/reward language, mass-forwarded commercial content naming no channel, link, credential or amount); both route to mute. Re-run held-out then affected rows only. 2) msg_048 stays scam; note it in the README as a deliberate call. 3) Packaging: README covering architecture, run instructions, env vars, evaluation and split methodology, ablation table, corpus observations, reasoned decisions, and a plain statement that no message_id-to-label mapping exists and sample labels were never used as a lookup; disclose the Gemini model split; build and verify the submission zip; confirm the log path and line count; print the final checklist.
+
+Agent Response Summary:
+Added the scam-vs-spam distinction as a feature rule in the rubric with no row special-casing. Held-out held at action 15/15 and type 15/15 with driver 10/15, no regression. Re-ran the 32 affected scam/spam rows. Reported honestly that msg_018 did NOT move - it remains scam because the model reads the imperative "Claim today" as a concrete ask; the rule is in place and generalises, action is mute either way, and I did not force the row. Rewrote README.md as a submission document covering architecture and per-stage flow, clean-clone run instructions, env vars, evaluation and held-out split methodology, the six-configuration ablation table, eight corpus observations, five reasoned decisions including msg_048 as a deliberate compromised-admin call, an integrity section stating no message_id-to-label mapping exists and sample labels were never used as a lookup, and disclosure that 17 images were extracted by gemini-3.6-flash and 3 by gemini-3.5-flash due to the per-model daily free-tier quota. Filled the empty starter code/main.py with a real entry point since AGENTS.md names it the conventional one, and removed the empty code/evaluation/main.py. Built and verified submission.zip: no secrets, no .env, no dataset/cache/recon, no pycache, no empty files, README entry points all resolve, output.csv re-validated from the extracted copy.
+
+Actions:
+* code/rubric.py - scam vs spam feature rule
+* code/main.py - conventional entry point wired to media + predict
+* README.md - full submission rewrite
+* requirements.txt, submission.zip
+* Re-ran 32 scam/spam rows; output.csv regenerated, all 16 checks pass
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+
+## [2026-08-02T13:31:54+05:30] FINAL SUBMISSION VERIFICATION
+
+User Prompt (verbatim, secrets redacted):
+verify once, logs.txt, readme.md and all other htings whcih are expected to be submmited are correct?
+
+Agent Response Summary:
+Ran a full verification pass over every submission artifact. output.csv satisfies the AGENTS.md section 6 contract (110 rows, exact columns and order, ids matching messages.csv, literal none on 10 empty-evidence rows, all values in the allowed sets, zero unresolvable evidence ids). Every factual claim in README.md was re-checked against live data and matched: held-out 15/15 action, 15/15 type, 10/15 driver, confidence deltas +0.009/+0.002/+0.023, the msg_065 digest versus msg_066 mute divergence, the 17/3 Gemini model split, 24 canonical reason strings loaded from the CSV, and the 15/15 split. Found and fixed one overclaim: the README asserted no message_id to label mapping exists anywhere in the code, but two message_id literals live in run.py pick_five(). They map to description strings for the diagnostic report and never reach a routing decision, and the decision path itself has zero literals, so the substantive claim held; the wording was tightened to state exactly that and to disclose the run.py case rather than leave it to be discovered. Also audited log.txt against section 5.2 and found one deviation: entry 10's title is 104 characters against the 80-character guidance. Left uncorrected because section 2 mandates append-only and forbids rewriting prior entries; disclosed instead. Rebuilt and re-verified the zip.
+
+Actions:
+* README.md - integrity claim tightened and run.py literals disclosed
+* submission.zip rebuilt and re-verified (no secrets, no .env, no dataset/cache/recon, no pycache, no empty files, contents match working tree)
+* Verified log.txt: 12 blocks, all turn entries carry the required 5.2 fields, no secrets, monotonic timestamps
+
+Context:
+tool=claude-code
+branch=main
+repo_root=/Users/aksharanup/Developer/hackerrank-orchestrate-august26
+worktree=main
+parent_agent=none
+

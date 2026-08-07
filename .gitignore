@@ -1,0 +1,27 @@
+# secrets
+.env
+.env.local
+
+# dataset (not redistributed - see README)
+dataset/
+media/
+
+# pipeline caches and generated predictions
+cache/
+recon/
+output.csv
+
+# python
+__pycache__/
+*.pyc
+
+# virtualenvs
+venv/
+.venv/
+env/
+
+# models
+models/
+
+# os
+.DS_Store
