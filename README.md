@@ -47,27 +47,26 @@ ordinary, testable code.
 ## Architecture
 
 ```mermaid
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "nodeSpacing": 40, "rankSpacing": 45}} }%%
 flowchart TD
-    CSV["13 CSVs<br/>users · groups · business<br/>history · events"]
-    MEDIA["Media files<br/>20 images · 13 voice notes"]
+    CSV["13 CSVs<br/>users · groups · history"]
+    MEDIA["Media files<br/>images · voice notes"]
 
-    CTX["Stage 0 · Context assembly<br/>context.py<br/>typed ContextPack per message<br/>absence represented, never imputed"]
-    ENR["Stage 1 · Media enrichment<br/>media.py<br/>faster-whisper large-v3 local ASR<br/>Gemini Flash structured vision<br/>SHA-256 content cache"]
+    CTX["Stage 0 · Context<br/>typed ContextPack"]
+    ENR["Stage 1 · Media<br/>local ASR + vision"]
+    RET["Stage 2 · Retrieval<br/>pool · near-dup · hybrid"]
+    DEC["Stage 3 · Decision<br/>one constrained LLM call"]
 
-    RET["Stage 2 · Retrieval<br/>retrieval.py<br/>user-scoped pool · near-duplicate detection<br/>BM25 + multilingual dense hybrid"]
-
-    DEC["Stage 3 · Decision engine<br/>decide.py<br/>Claude Sonnet · temperature 0<br/>tool-use schema · cached rubric prefix"]
-
-    subgraph CONS["Stage 4 · Deterministic constraint layer — constraints.py"]
+    subgraph CONS["Stage 4 · Constraint layer"]
         direction TB
-        G["Grammar enforcement<br/>scam / spam to mute · urgent to notify"]
-        E["Evidence validation<br/>candidate pool only · zero fabricated"]
-        R["Reason rendering<br/>closed 24-string vocabulary"]
-        C["Confidence banding<br/>signal agreement, not self-report"]
+        G["Grammar enforcement"]
+        E["Evidence validation"]
+        R["Reason rendering"]
+        C["Confidence banding"]
         G --> E --> R --> C
     end
 
-    OUT["output.csv<br/>110 rows · 16/16 validation checks"]
+    OUT["output.csv<br/>110 rows"]
 
     CSV --> CTX
     MEDIA --> ENR
@@ -77,12 +76,11 @@ flowchart TD
     DEC --> G
     C --> OUT
 
-    classDef input fill:#eef2ff,stroke:#6366f1,stroke-width:1px,color:#1e1b4b
-    classDef stage fill:#ecfdf5,stroke:#10b981,stroke-width:1px,color:#064e3b
-    classDef llm fill:#fef3c7,stroke:#f59e0b,stroke-width:1px,color:#451a03
-    classDef guard fill:#fae8ff,stroke:#a855f7,stroke-width:1px,color:#3b0764
-    classDef out fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#172554
-
+    classDef input fill:#eef2ff,stroke:#6366f1,color:#1e1b4b
+    classDef stage fill:#ecfdf5,stroke:#10b981,color:#064e3b
+    classDef llm   fill:#fef3c7,stroke:#f59e0b,color:#451a03
+    classDef guard fill:#fae8ff,stroke:#a855f7,color:#3b0764
+    classDef out   fill:#dbeafe,stroke:#2563eb,color:#172554
     class CSV,MEDIA input
     class CTX,ENR,RET stage
     class DEC llm
