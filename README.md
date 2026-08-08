@@ -388,7 +388,7 @@ Speech recognition is `faster-whisper large-v3`, run locally with no API.
 ## Dataset
 
 **The corpus belongs to HackerRank and is not redistributed here.** This repository
-contains only the pipeline, the evaluation artifacts, and the build transcript.
+contains only the pipeline and its evaluation artifacts.
 
 - Original challenge repository:
   [`interviewstreet/hackerrank-orchestrate-august26`](https://github.com/interviewstreet/hackerrank-orchestrate-august26)
@@ -421,25 +421,6 @@ dataset/
 The simplest way to reproduce is to clone the fork above, which has the dataset and
 this code together.
 
----
-
-## How this was built
-
-The implementation was written by Claude Code, working from my direction across a
-multi-day session.
-
-I owned the architecture and every technical decision: the stage decomposition, the
-closed reason vocabulary and how it is derived from the labelled data, the trap
-taxonomy the rubric is built on, the evaluation methodology and held-out split, the
-choice to measure the shortcut tier and then cut it, moving confidence off the
-model's self-report onto a deterministic signal, and the calls not to tune against
-small-sample noise. Several of the findings in *Corpus observations* came out of
-audits I asked for specifically because a number looked wrong.
-
-The full turn-by-turn transcript is in [`transcript/log.txt`](transcript/log.txt) —
-including the reversals, the bugs found in my own evaluation harness, and the
-premises I got wrong and corrected. It is the honest record of how the system
-reached its final shape, not a cleaned-up narrative.
 
 ---
 
@@ -449,7 +430,6 @@ reached its final shape, not a cleaned-up narrative.
 |---|---|
 | `code/` | The pipeline. |
 | `eval/` | Held-out scoring, component ablation, and the shortcut-tier measurement. |
-| `transcript/log.txt` | Full build transcript. |
 | `.env.example` | Required variables, no values. |
 | `requirements.txt` | Dependencies. |
 
