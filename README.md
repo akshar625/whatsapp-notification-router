@@ -49,13 +49,13 @@ ordinary, testable code.
 ```mermaid
 %%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false, "nodeSpacing": 40, "rankSpacing": 45}} }%%
 flowchart TD
-    CSV["13 CSVs<br/>users · groups · history"]
-    MEDIA["Media files<br/>images · voice notes"]
+    CSV["13 CSVs · users, groups, history"]
+    MEDIA["Media · images, voice notes"]
 
-    CTX["Stage 0 · Context<br/>typed ContextPack"]
-    ENR["Stage 1 · Media<br/>local ASR + vision"]
-    RET["Stage 2 · Retrieval<br/>pool · near-dup · hybrid"]
-    DEC["Stage 3 · Decision<br/>one constrained LLM call"]
+    CTX["Stage 0 · Context assembly"]
+    ENR["Stage 1 · Media enrichment"]
+    RET["Stage 2 · Retrieval"]
+    DEC["Stage 3 · Decision"]
 
     subgraph CONS["Stage 4 · Constraint layer"]
         direction TB
@@ -66,7 +66,7 @@ flowchart TD
         G --> E --> R --> C
     end
 
-    OUT["output.csv<br/>110 rows"]
+    OUT["output.csv · 110 rows"]
 
     CSV --> CTX
     MEDIA --> ENR
